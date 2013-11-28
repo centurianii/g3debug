@@ -18,7 +18,7 @@ Internally, the whole design exploits a variation of the module pattern and buil
 
 A note on my library symbol: 
 -------------------------------------
-it's the '$$' internally but if you edit it at the last line (window.$$ = window.$$ || {}) you can name it whatever you want and like so you can call it externally!
+it's the '$$' internally but if you edit it at the last line (window.$$ = window.$$ || {}) you can name it whatever you want and call it like so externally!
 Some calls: 
 //debug 'obj' up to 5 levels deep and write the results to a new window
 //wrapped as an ordered list
