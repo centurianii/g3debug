@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>JavaScript Debugger</title>
+<style>
+   h1 {
+      color: #808080;
+   }
+   h1:hover {
+      color: #000000;
+      text-decoration: none;
+      cursor: pointer;
+   }
+   .dot {
+      border-style: dotted;
+   }
+</style>
+<script src="../../jquery/jquery-1.10.2.js"></script>
+<script src="jsdebug.js"></script>
+</head>
+<body>
+     <h1 id="custom">Debug Custom Object</h1>
+ <pre>
+        obj2
+         |__ foo = 'bar'
+         |__ loop2 = obj2
+         |            :
+         |__ another = obj1
+                        |__ a1 = 1
+                        |__ b1 = 'baz'
+                        |__ loop1 = obj1
+                        |            :
+                        |__ c1 = true
+                        |__ d1 = ''
+                        |__ e1 = [1,2,3]
+    </pre>
+
+     <h1 id="style">Debug 1st styleSheet Object</h1>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="jquery-1.10.2.js"><\/script>')</script>
+    <script>
+        var obj1 = new Object();
+        obj1.a1 = 1;
+        obj1.b1 = 'baz';
+        obj1.loop1 = obj1;
+        obj1.c1 = true;
+        obj1.d1 = '';
+        obj1.e1 = [1, 2, 3];
+        var obj2 = new Object();
+        obj2.foo = 'bar';
+        obj2.loop2 = obj2;
+        obj2.another = obj1;
+
+        $('#custom').on('click', function(evt) {
+            //alert($$.utils.debug(obj2).toString());
+            $$.utils.debug(obj2).popup('o');
+        });
+        $('#style').on('click', function(evt) {
+            var s = window.document.styleSheets[0];
+            //alert($$.utils.debug(s).toString());
+            $$.utils.debug(s, 5).popup('o');
+        });
+    </script>
