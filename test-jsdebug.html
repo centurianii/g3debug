@@ -52,6 +52,7 @@
         obj2.foo = 'bar';
         obj2.loop2 = obj2;
         obj2.another = obj1;
+        var s = window.document.styleSheets[0];
 
         $('#custom').on('click', function(evt) {
             //alert($$.utils.debug(obj2).toString());
@@ -61,5 +62,6 @@
             var s = window.document.styleSheets[0];
             //alert($$.utils.debug(s).toString());
             $$.utils.debug(s, 5).popup('o');
+            //replace 's' with 'document.body' if ypu dare!
         });
     </script>
