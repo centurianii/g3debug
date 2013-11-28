@@ -16,6 +16,30 @@ I hope some answers are answered well with a helpful object like 'jsdebug'.
 
 Internally, the whole design exploits a variation of the module pattern and builds on a bigger library as it would be revealed in the forthcoming projects.
 
+A note on my library symbol: 
+-------------------------------------
+it's the '$$' internally but if you edit it at the last line (window.$$ = window.$$ || {}) you can name it whatever you want and like so you can call it externally!
+Some calls: 
+//debug 'obj' up to 5 levels deep and write the results to a new window
+//wrapped as an ordered list
+$$.utils.debug(obj, 5).popup('o');
+//the same as above but with no formation inside <pre></pre> tags
+$$.utils.debug(obj, 5).popup(); //or, $$.utils.debug(obj, 5).popup('pre');
+
+A note on jQuery: 
+-----------------------
+my library is independent but can become a jQuery plugin!
+
+A note on modularity:
+----------------------------
+Everything can be broken apart to pieces and become part of different files that are called by <script></script> tags:
+<script src="utils.js"></script>
+<script src="debug.js"></script>
+...
+The only restriction is to wrap the code in an anonymous self-invoking function like so:
+(function($$, $, window, document, undefined){
+...
+}(window.$$ = window.$$ || {}, jQuery, window, document));
 Issues that was faced:
 - handling js primitive types
 - browser compatibility
