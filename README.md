@@ -1,7 +1,7 @@
 jsdebug
 =======
 
-javascript debugger
+Javascript debugger
 
 Parsing the members of an object should be relatively easy but, what happens when:
 
