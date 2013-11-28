@@ -19,8 +19,9 @@ Internally, the whole design exploits a variation of the module pattern and buil
 Issues that was faced:
 - handling js primitive types
 - browser compatibility
-- handling circular referenves
+- handling circular references
 - testing the dreadful 'StyleSheet' object especially with Mozila's number-attributes or even 'document.body' (see http://stackoverflow.com/questions/957537/how-can-i-print-a-javascript-object)
+- representing internally a tree as a single array, what I call the 'flattened tree representation' already successfully tested on my bigger projects :)
 
 Have fun!
 
