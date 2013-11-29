@@ -18,29 +18,38 @@ Internally, the whole design exploits a variation of the module pattern and buil
 
 A note on my library symbol: 
 -------------------------------------
-it's the '$$' internally but if you edit it at the last line (window.$$ = window.$$ || {}) you can name it whatever you want and call it like so externally!
-Some calls: 
+It's the '$$' internally but if you edit it at the last line (window.$$ = window.$$ || {}) you can name it whatever you want and call it like so externally!
+Some calls:
+<pre>
 //debug 'obj' up to 5 levels deep and write the results to a new window
 //wrapped as an ordered list
 $$.utils.debug(obj, 5).popup('o');
-//the same as above but with no formation inside <pre></pre> tags
+//the same as above but with no formation inside &lt;pre&gt;&lt;/pre&gt; tags
 $$.utils.debug(obj, 5).popup(); //or, $$.utils.debug(obj, 5).popup('pre');
+</pre>
 
 A note on jQuery: 
 -----------------------
-my library is independent but can become a jQuery plugin!
+My library is independent but can become a jQuery plugin!
 
 A note on modularity:
 ----------------------------
-Everything can be broken apart to pieces and become part of different files that are called by <script></script> tags:
-<script src="utils.js"></script>
-<script src="debug.js"></script>
+Everything can be broken apart to pieces and become part of different files that are called by &lt;script&gt;&lt;/script&gt; tags:
+
+<pre>
+&lt;script src="utils.js"&gt;&lt;/script&gt;
+&lt;script src="debug.js"&gt;&lt;/script&gt;
 ...
-The only restriction is to wrap the code in an anonymous self-invoking function like so:
+</pre>
+The only restriction is to wrap the pieces to anonymous self-invoking functions like so:
+<pre>
 (function($$, $, window, document, undefined){
 ...
 }(window.$$ = window.$$ || {}, jQuery, window, document));
+</pre>
+
 Issues that was faced:
+----------------------
 - handling js primitive types
 - browser compatibility
 - handling circular references
