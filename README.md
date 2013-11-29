@@ -12,7 +12,7 @@ Parsing the members of an object should be relatively easy but, what happens whe
 + we try to parse custom, host, native, DOM or CSSOM objects?
 + we want to easily extend the behaviour of our debugger?
 
-I hope some answers are answered well with a helpful object like 'jsdebug'.
+I hope some answers are answered well with a helpful object like '<b>jsdebug</b>'.
 
 Suppose the following object with circular references:
 <pre>
