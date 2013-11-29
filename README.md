@@ -14,6 +14,35 @@ Parsing the members of an object should be relatively easy but, what happens whe
 
 I hope some answers are answered well with a helpful object like 'jsdebug'.
 
+Suppose the following object with circular references:
+<pre>
+        obj2
+         |__ foo = 'bar'
+         |__ loop2 = obj2
+         |            :
+         |__ another = obj1
+                        |__ a1 = 1
+                        |__ b1 = 'baz'
+                        |__ loop1 = obj1
+                        |            :
+                        |__ c1 = true
+                        |__ d1 = ''
+                        |__ e1 = [1,2,3]
+</pre>
+The display then is:
+<ol>
+<li><span style="margin-left: 0em">0, foo, 'bar'</span></li>
+<li><span style="margin-left: 0em">0, loop2, <span style="color: red">'contains a circular reference to object at index 0'</span></span></li>
+<li><span style="margin-left: 0em">0, another, <span style="color: blue">'object'</span></span></li>
+<li><span style="margin-left: 2em">1, a1, 1</span></li>
+<li><span style="margin-left: 2em">1, b1, 'baz'</span></li>
+<li><span style="margin-left: 2em">1, loop1, <span style="color: red">'contains a circular reference to object at index 2'</span></span></li>
+<li><span style="margin-left: 2em">1, c1, 'true'</span></li>
+<li><span style="margin-left: 2em">1, d1, ''</span></li>
+<li><span style="margin-left: 2em">1, e1, [1,2,3]</span></li>
+</ol>
+See it at: http://jsfiddle.net/centurianii/92Cmk/36/
+
 Internally, the whole design exploits a variation of the module pattern and builds on a bigger library as it would be revealed in the forthcoming projects.
 
 A note on my library symbol: 
