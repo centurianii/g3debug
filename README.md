@@ -68,8 +68,8 @@ A note on modularity:
 Everything can be broken apart to pieces and become part of different files that are called by &lt;script&gt;&lt;/script&gt; tags:
 
 <pre>
-&lt;script src="utils.js"&gt;&lt;/script&gt;
-&lt;script src="debug.js"&gt;&lt;/script&gt;
+&lt;script src="jsutils.js"&gt;&lt;/script&gt;
+&lt;script src="jsdebug.js"&gt;&lt;/script&gt;
 ...
 </pre>
 The only restriction is to wrap the pieces to anonymous self-invoking functions like so:
