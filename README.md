@@ -41,7 +41,7 @@ The display then is:
 <li><span style="margin-left: 2em">1, d1, ''</span></li>
 <li><span style="margin-left: 2em">1, e1, [1,2,3]</span></li>
 </ol>
-See it at: http://jsfiddle.net/centurianii/92Cmk/37/
+See it at: http://jsfiddle.net/centurianii/3R5Mg/
 
 Design
 ------
