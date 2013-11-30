@@ -61,7 +61,7 @@ $$.utils.debug(obj, 5).popup(); //or, $$.utils.debug(obj, 5).popup('pre');
 
 A note on jQuery: 
 -----------------------
-My library is independent but can become a jQuery plugin!
+My library is independent but can become a jQuery plugin with a simple assignment!
 
 A note on modularity:
 ----------------------------
