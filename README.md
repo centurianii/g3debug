@@ -43,6 +43,8 @@ The display then is:
 </ol>
 See it at: http://jsfiddle.net/centurianii/92Cmk/36/
 
+Design
+------
 Internally, the whole design exploits a variation of the module pattern and builds on a bigger library as it would be revealed in the forthcoming projects.
 
 A note on my library symbol: 
