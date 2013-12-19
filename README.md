@@ -41,7 +41,7 @@ The display then is:
 <li><span style="margin-left: 2em">1, d1, ''</span></li>
 <li><span style="margin-left: 2em">1, e1, [1,2,3]</span></li>
 </ol>
-See it at: http://jsfiddle.net/centurianii/3R5Mg/
+See it at: http://jsfiddle.net/centurianii/3R5Mg/2/
 
 Design
 ------
@@ -86,6 +86,10 @@ Issues that was faced:
 - handling circular references
 - testing the dreadful 'StyleSheet' object especially with Mozila's number-attributes or even 'document.body' (see http://stackoverflow.com/questions/957537/how-can-i-print-a-javascript-object)
 - representing internally a tree as a single array, what I call the 'flattened tree representation' already successfully tested on my bigger projects :)
+
+Update
+------
+My namespace moved from <code>$$</code> to <code>g3</code> and so all my projects moved from <code>js&lt;project-name&gt;</code> to <code>g3&lt;project-name&gt;</code> meaning: at global object <code>g3</code> look for member <code>&lt;project-name&gt;</code>.
 
 Have fun!
 
