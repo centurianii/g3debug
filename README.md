@@ -49,7 +49,8 @@ Internally, the whole design exploits a variation of the module pattern and buil
 
 A note on my library symbol: 
 -------------------------------------
-It's the <code>$$</code> internally but if you edit it at the last line <code>window.$$ = window.$$ || {}</code> you can name it whatever you want and call it like so externally! Also, see <b>Update</b>.
+It's the <code>$$</code> internally but if you edit it at the last line <code>window.$$ = window.$$ || {}</code> you can name it whatever you want and call it like so externally!<br />
+Also, read <b>Update</b>.<br />
 Some calls:
 <pre>
 //debug 'obj' up to 5 levels deep and write the results to a new window
