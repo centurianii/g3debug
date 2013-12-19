@@ -95,7 +95,7 @@
 * @author Scripto JS Editor by Centurian Comet.
 * @copyright MIT licence.
 *******************************************************************************/
-   g3.utils.debug = function(obj, maxDepth){ //construct with argument
+   g3.debug = function(obj, maxDepth){ //construct with argument
       var tree = [], refs = [], max;
       refs.push( [ 0, obj ] );
       if(maxDepth && (g3.utils.typeOf(maxDepth) === 'number') && (maxDepth > 0))
