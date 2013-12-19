@@ -1,4 +1,4 @@
-jsdebug
+g3debug
 =======
 
 Javascript debugger
