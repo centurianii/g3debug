@@ -12,7 +12,7 @@ Parsing the members of an object should be relatively easy but, what happens whe
 + we try to parse custom, host, native, DOM or CSSOM objects?
 + we want to easily extend the behaviour of our debugger?
 
-I hope some answers are answered well with a helpful object like '<b>jsdebug</b>'.
+I hope some answers are answered well with a helpful object like '<b>g3debug</b>'.
 
 Suppose the following object with circular references:
 <pre>
@@ -49,7 +49,7 @@ Internally, the whole design exploits a variation of the module pattern and buil
 
 A note on my library symbol: 
 -------------------------------------
-It's the '$$' internally but if you edit it at the last line (window.$$ = window.$$ || {}) you can name it whatever you want and call it like so externally!
+It's the <code>$$</code> internally but if you edit it at the last line <code>window.$$ = window.$$ || {}</code> you can name it whatever you want and call it like so externally! Also, see <b>Update</b>.
 Some calls:
 <pre>
 //debug 'obj' up to 5 levels deep and write the results to a new window
