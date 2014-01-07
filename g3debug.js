@@ -1,6 +1,9 @@
 /**
- * Root namespace.
- * @namespace {g3}
+ * Javascript debugger for printing identifiers of simple or structured form 
+ * like objects.
+ * @version 0.1
+ * @author Scripto JS Editor by Centurian Comet.
+ * @copyright MIT licence.
  */
 (function(g3, $, window, document, undefined){
    g3.utils = g3.utils || {};
@@ -193,14 +196,21 @@
          toString: function(){
             var tmp ='';
             for(var i = 0; i < tree.length; i++)
-               tmp += tree[i].join(', ')+'\n';
+               //tmp += tree[i].join(', ').replace(',', '->')+'\n';
+               tmp += tree[i][0] + ': ' + tree[i][1] + ' -> ' + tree[i][2] + '\n';
+            return tmp;
+         },
+         toHtml: function(){
+            var tmp ='';
+            for(var i = 0; i < tree.length; i++)
+               tmp += '<span style="margin-left: '+tree[i][0]*2+'em">'+this.formatRow(tree[i])+'</span>'+'<br />';
             return tmp;
          },
          formatRow: function(arr){
             var quotes = ['\'object\'', '\'function\'', 'circular reference'], 
             pos = -1, circular = false;
             if(arr[0] == -1)
-               return '<span style="color: red">' + arr.join(', ') + '</span>';
+               return '<span style="color: red">' + arr[0] + ': ' + arr[1] + ' -> ' + arr[2] + '</span>';
             for(var i = 0; i < quotes.length; i++){
                pos = (arr[2] + '').lastIndexOf(quotes[i]);
                if(pos >= 0){
@@ -211,7 +221,7 @@
             }
             if(pos >= 0)
                arr[2] = '<span style="color: ' + ((circular)? 'red': 'blue') + '">' + arr[2] + '</span>';
-            return arr.join(', ');
+            return (arr[0] + ': ' + arr[1] + ' -> ' + arr[2]);
          },
          popup: function(tag){
             var w = window.open("about:blank");
