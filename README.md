@@ -91,11 +91,31 @@ Issues that was faced:
 
 Update
 ------
+<b>v.0.1</b><br />
 My namespace moved from <code>$$</code> to <code>g3</code> and so all my projects moved from <code>js&lt;project-name&gt;</code> to <code>g3&lt;project-name&gt;</code> meaning: at global object <code>g3</code> look for member <code>&lt;project-name&gt;</code>, ex.<br />
 <ul>
 <li><code>g3debug</code> object <code>g3.debug</code></li>
 <li><code>g3utils</code> object <code>g3.utils</code></li>
 </ul>
+<b>v.0.1.1</b><br />
+Exploits <code>toString()</code> prototype function of <code>Object</code> and <code>Function</code>: now it prints a message about an object, like <code>[object CSSRuleList]</code> and just the signature of the function's definition.<br />
+A mesterious thing that was found was this one: after a second execution of the <code>debug</code> an error was thrown when a property of a child object was evaluaded in the following block:
+<pre>
+try{
+   value = obj[property];
+}catch(e){
+   str = [-1, 'Error:', e];
+   //new record
+   tree.push(str);
+   break;
+}
+</pre>
+it was found that when an empty string was added to the results of <code>toString()</code> the failed attempts diminish and the source of errors was lower down at the updated block:
+<pre>
+if(!circular){
+   ....
+}
+</pre>
 
 Have fun!
 
