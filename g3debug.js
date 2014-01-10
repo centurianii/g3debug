@@ -1,7 +1,7 @@
 /**
  * Javascript debugger for printing identifiers of simple or structured form 
  * like objects.
- * @version 0.1
+ * @version 0.1.1
  * @author Scripto JS Editor by Centurian Comet.
  * @copyright MIT licence.
  */
