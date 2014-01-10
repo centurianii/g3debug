@@ -167,8 +167,14 @@
                   if(g3.utils.typeOf(value) === 'object'){
                      refs.push( [ tree.length - 1, value ] );
                      tmp = '\'object\'';
-                  }else if(g3.utils.typeOf(value) === 'function')
-                     tmp = value;
+                     if(value.toString)
+                        tmp += value.toString() + '';
+                  }else if(g3.utils.typeOf(value) === 'function'){
+                     tmp = '\'function\'';
+                     if(value.toString){
+                        tmp += ' [' + value.toString().slice(0, value.toString().indexOf('{')+1).replace(/\n|\r|[\b]/g, '') + '...]';
+                     }
+                  }
                }
                str[2] = tmp;
                tree[tree.length - 1] = str;
