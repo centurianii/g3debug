@@ -101,11 +101,14 @@ Issues that was faced:
 Update
 ------
 <b>v.0.1</b><br />
-My namespace moved from <code>$$</code> to <code>g3</code> and so all my projects moved from <code>js&lt;project-name&gt;</code> to <code>g3&lt;project-name&gt;</code> meaning: at global object <code>g3</code> look for member <code>&lt;project-name&gt;</code>, ex.<br />
+<ol>
+<li>My namespace moved from <code>$$</code> to <code>g3</code> and so all my projects moved from <code>js&lt;project-name&gt;</code> to <code>g3&lt;project-name&gt;</code> meaning: at global object <code>g3</code> look for member <code>&lt;project-name&gt;</code>, ex.<br />
 <ul>
 <li><code>g3debug</code> object <code>g3.debug</code></li>
 <li><code>g3utils</code> object <code>g3.utils</code></li>
 </ul>
+</li>
+</ol>
 <b>v.0.1.1</b><br />
 <ol>
 <li>Exploits <code>toString()</code> prototype function when encounters <code>Object</code> and <code>Function</code> members: now it prints a message about an object, like <code>[object CSSRuleList]</code> and just the signature of the function's definition.<br />
@@ -130,6 +133,12 @@ if(!circular){
 <li>
 Corrected unlimited search when we pass 0 as 2nd argument. Now, unlimited search happens only at negative numbers or null.
 </li>
+</ol>
+<b>v.0.1.2</b><br />
+<ol>
+<li>Now, handles any native type (number, boolean, string, date, array), functions and objects of any type native, host or custom.
+</li>
+</ol>
 
 Have fun!
 
