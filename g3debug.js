@@ -218,8 +218,10 @@
       //for..in loop fails on functions with no members, null, empty objects, empty arrays, booleans, dates, numbers
       if(g3.utils.isEmptyObject(obj)){
          var str;
-         if(obj === null){alert('in');
-            str = 'null';}
+         if(obj === null)
+            str = 'null';
+         else if(obj === '')
+            str = '\'\'';
          else
             str = obj.toString();
          if(g3.utils.typeOf(obj) === 'array')
