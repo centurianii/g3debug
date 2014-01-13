@@ -101,7 +101,7 @@
    g3.debug = function(obj, maxDepth){ //construct with argument
       var tree = [], refs = [], max;
       refs.push( [ 0, obj ] );
-      if(maxDepth && (g3.utils.typeOf(maxDepth) === 'number') && (maxDepth > 0))
+      if((maxDepth === 0) || ((g3.utils.typeOf(maxDepth) === 'number') && (maxDepth >= 0)))
          max = maxDepth;
       else
          max = -1;
