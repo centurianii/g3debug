@@ -1,23 +1,16 @@
 /**
- * Javascript debugger for printing identifiers of simple or structured form 
- * like objects.
+ * Javascript debugger for printing key-value members of simple or complex  
+ * objects, native or host.
+ *
  * @version 0.1.1
  * @author Scripto JS Editor by Centurian Comet.
  * @copyright MIT licence.
  */
 (function(g3, $, window, document, undefined){
+   /*
+    * Add necessary functions from 'g3.utils' namespace.
+    */
    g3.utils = g3.utils || {};
-
-/*******************************Function typeOf()*******************************
-* Overloads javascript's 'typeof' operator.
-* @module {g3.utils}
-* @function {g3.utils.typeOf}
-* @public
-* @param {Type} 'value' an identifier of any javascript's type.
-* @return {string} Returns a string for the type of the passed argument.
-* @reference http://javascript.crockford.com/remedial.html
-* http://stackoverflow.com/questions/767486/how-do-you-check-if-a-variable-is-an-array-in-javascript/767499
-*******************************************************************************/
    g3.utils.typeOf = function(value) {
       var s = typeof value;
       if (s === 'object') {
@@ -31,22 +24,6 @@
       }
       return s;
    };
-
-/******************************Function htmlList()******************************
-* Returns a string of a html list constructed from the passed arguments.
-* @module {g3.utils}
-* @function {g3.utils.htmlList}
-* @public
-* @param {String} 'type' the type of list, 'u' for onordered or 'o' for ordered.
-* @param {String|Array} Second and forth should be strings or instead it can 
-* be given an array of strings as a second argument.
-* @return {string} Returns a string of a html list constructed from the passed 
-* arguments starting from the second one or, false if i) there is no second or 
-* more arguments or, ii), the first argument is not a string with value 'u' or 
-* 'o'.
-* @author Scripto JS Editor by Centurian Comet.
-* @copyright All rights reserved.
-*******************************************************************************/
    g3.utils.htmlList = function(type) {
       if(!type || (g3.utils.typeOf(type) != 'string') || ((type.toLowerCase() != 'u') && 
         (type.toLowerCase() != 'o')) || (arguments.length <= 1))
@@ -61,19 +38,16 @@
       result += "</li></" + type.toLowerCase() + "l>";
       return result;
    };
-}(window.g3 = window.g3 || {}, jQuery, window, document));
-
-(function(g3, $, window, document, undefined){
-   g3.utils = g3.utils || {};
+   
 /*********************************Object debug()********************************
 * Returns a stringify form of an object for debugging purposes. Internally, it 
-* stores a flattened representation of the object tree-structure.
-* @module {g3.utils.debug}
+* stores a flattened representation of the object's tree-structure.
+* @module {g3.debug}
 * @constructor
 * @param {Object} 'obj' the object to stringify.
 * @param {Number} 'maxDepth' the maximum depth to look for when a property is an 
 * object reference which in turn can contain other object references. It's 
-* 1-based but internally it's converted and stored as a 0-based number.
+* 0-based starting with the first level childs.
 * @return {Object} Returns an object. Circular references are not followed 
 * because they are recognised on first meet. The internal structure that is 
 * built is a flattened representation of a tree which is a 2-dimensional 
@@ -95,6 +69,26 @@
 * 2) Similar, successive entries with the same depth n are all members of the 
 * object at depth n-1 at the entry immediate before them. Example: at n+1 we can 
 * see 2 members of an object at depth (n+1)-1 = n <- (i, 0).
+* @function {g3.debug.toString}
+* @return {String} A string representation of the structure based on key-value
+* pairs in depth defined during construction. Each pair ends with a newline 
+* character, i.e. '\n'.
+* @function {g3.debug.toHtml}
+* @return {String} An html representation of the structure based on key-value
+* pairs in depth defined during construction. Each pair ends with a break 
+* character, i.e. '<br \>'.
+* @function {g3.debug.formatRow}
+* Formats a single array that is passed as argument as an html string. It's a 
+* helper function to be used by 'toHtml()' and 'popup()' methods.
+* @param {Array} 'arr' A single array with 3 entries: [depth, key, value].
+* @return {String} An html representation of the array entries.
+* @function {g3.debug.popup}
+* Opens a new window and writes an html string with formation that follows the 
+* passed argument.
+* @param {String} 'tag' One of the strings: ['pre', 'o', 'u'] with default value 
+* 'pre'.
+* @return {Null}
+*
 * @author Scripto JS Editor by Centurian Comet.
 * @copyright MIT licence.
 *******************************************************************************/
@@ -230,15 +224,27 @@
             return (arr[0] + ': ' + arr[1] + ' -> ' + arr[2]);
          },
          popup: function(tag){
+            if(!tag || (typeof tag !== 'string'))
+               tag = 'pre';
+            tag = tag.toLowerCase();
+            var tags = ['pre', 'o', 'u'];
+            var found = false;
+            for(var i = 0; i < tags.length; i++)
+               if(tag === tags[i]){
+                  found = true;
+                  break;
+               }
+            if(!found)
+               tag = 'pre';
             var w = window.open("about:blank");
             w.document.open();
             w.document.writeln("<HTML><BODY>");
-            if(!tag || (tag.toLowerCase() === 'pre')){
+            if(tag === 'pre'){
                w.document.writeln("<PRE>");
                w.document.writeln(this.toString());
                w.document.writeln("</PRE>");
             }
-            if((tag) && (tag.toLowerCase) && ((tag.toLowerCase() === 'u') || (tag.toLowerCase() === 'o'))){
+            if((tag === 'u') || (tag === 'o')){
                var list = [];
                for(var i = 0; i < tree.length; i++)
                   list[i] = '<span style="margin-left: '+tree[i][0]*2+'em">'+this.formatRow(tree[i])+'</span>';
