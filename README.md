@@ -43,6 +43,14 @@ The display then is:
 </ol>
 See it at: http://jsfiddle.net/centurianii/wLJz4/1/
 
+Debug it
+========
+Get a string with newlines <code>\n</code> describing the analyzed object at unlimited depth: <code>g3.debug(obj).toString()</code>.<br />
+Get a string with newlines describing the analyzed object up at depth n: <code>g3.debug(obj, n).toString()</code>.<br />
+Get an html describing the analyzed object up at depth n: <code>g3.debug(obj, n).toHtml()</code>.<br />
+Get an ordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('o')</code>.<br />
+Get an unordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('u')</code>.<br />
+
 Design
 ------
 Internally, the whole design exploits a variation of the module pattern and builds on a bigger library as it would be revealed in the forthcoming projects.
@@ -98,8 +106,9 @@ My namespace moved from <code>$$</code> to <code>g3</code> and so all my project
 <li><code>g3utils</code> object <code>g3.utils</code></li>
 </ul>
 <b>v.0.1.1</b><br />
-Exploits <code>toString()</code> prototype function of <code>Object</code> and <code>Function</code>: now it prints a message about an object, like <code>[object CSSRuleList]</code> and just the signature of the function's definition.<br />
-A mesterious thing that was found was this one: after a second execution of the <code>debug</code> an error was thrown when a property of a child object was evaluaded in the following block:
+<ol>
+<li>Exploits <code>toString()</code> prototype function when encounters <code>Object</code> and <code>Function</code> members: now it prints a message about an object, like <code>[object CSSRuleList]</code> and just the signature of the function's definition.<br />
+A mesterious thing that was found was this one: after a second execution of the debuger an error was thrown when a property of a child object was evaluaded in the following block:
 <pre>
 try{
    value = obj[property];
@@ -116,6 +125,10 @@ if(!circular){
    ....
 }
 </pre>
+</li>
+<li>
+Corrected unlimited search when we pass 0 as 2nd argument. Now, unlimited search happens only at negative numbers or null.
+</li>
 
 Have fun!
 
