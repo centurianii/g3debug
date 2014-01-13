@@ -1,6 +1,9 @@
 /**
- * Javascript debugger for printing key-value members of simple or complex  
- * objects, native or host.
+ * Javascript debugger for printing native types (number, boolean, string, date, 
+ * array), functions and objects of any type native, host or custom in the form
+ * of:
+ * ': -> value' for simple types or, 
+ * 'depth: key -> value' for complex ones.
  *
  * @version 0.1.2
  * @author Scripto JS Editor by Centurian Comet.
