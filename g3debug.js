@@ -2,7 +2,7 @@
  * Javascript debugger for printing key-value members of simple or complex  
  * objects, native or host.
  *
- * @version 0.1.1
+ * @version 0.1.2
  * @author Scripto JS Editor by Centurian Comet.
  * @copyright MIT licence.
  */
@@ -23,6 +23,27 @@
          }
       }
       return s;
+   };
+   g3.utils.isEmptyObject = function(obj){
+      var result = true;
+      if(obj === null)
+         return result;
+      if((typeof obj === 'object') || (typeof obj === 'function')){
+         for(var prop in obj){
+            if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+               result = false;
+               break;
+            }
+         }
+         //overwrite previous result! (new ECMA 5 properties)
+         //FF Error: returns 5 prototype properties on functions and 1 on arrays
+         //as their own!
+         if((typeof Object.getOwnPropertyNames === 'function') && (g3.utils.typeOf(obj) === 'object')){
+            result = (Object.getOwnPropertyNames(obj).length === 0);
+         }
+         return result;
+      }
+      return result;
    };
    g3.utils.htmlList = function(type) {
       if(!type || (g3.utils.typeOf(type) != 'string') || ((type.toLowerCase() != 'u') && 
@@ -95,7 +116,7 @@
    g3.debug = function(obj, maxDepth){ //construct with argument
       var tree = [], refs = [], max;
       refs.push( [ 0, obj ] );
-      if((maxDepth === 0) || ((g3.utils.typeOf(maxDepth) === 'number') && (maxDepth >= 0)))
+      if((maxDepth === 0) || ((g3.utils.typeOf(maxDepth) === 'number') && (maxDepth > 0)))
          max = maxDepth;
       else
          max = -1;
@@ -191,7 +212,22 @@
             tree.push(str);
          }*/
       };
-      traverse(obj, 0);
+      //for..in loop fails on functions with no members, null, empty objects, empty arrays, booleans, dates, numbers
+      if(g3.utils.isEmptyObject(obj)){
+         var str;
+         if(obj === null){alert('in');
+            str = 'null';}
+         else
+            str = obj.toString();
+         if(g3.utils.typeOf(obj) === 'array')
+            str = '[]';
+         else if(g3.utils.typeOf(obj) === 'object')
+            str = '{}';
+         else if(g3.utils.typeOf(obj) === 'function')
+            str = 'function(){}';
+         tree.push(['', '', str]);
+      }else
+         traverse(obj, 0);
       return {
          toString: function(){
             var tmp ='';
