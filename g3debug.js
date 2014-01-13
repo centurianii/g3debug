@@ -78,10 +78,10 @@
 * pairs in depth defined during construction. Each pair ends with a break 
 * character, i.e. '<br \>'.
 * @function {g3.debug.formatRow}
-* Formats a single array that is passed as argument as an html string. It's a 
+* Formats a single array that is passed as argument to an html string. It's a 
 * helper function to be used by 'toHtml()' and 'popup()' methods.
 * @param {Array} 'arr' A single array with 3 entries: [depth, key, value].
-* @return {String} An html representation of the array entries.
+* @return {String} An html representation of the array entry.
 * @function {g3.debug.popup}
 * Opens a new window and writes an html string with formation that follows the 
 * passed argument.
