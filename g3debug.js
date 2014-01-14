@@ -218,7 +218,9 @@
       //for..in loop fails on functions with no members, null, empty objects, empty arrays, booleans, dates, numbers
       if(g3.utils.isEmptyObject(obj)){
          var str;
-         if(obj === null)
+         if(typeof obj === 'undefined')
+            str = 'undefined';
+         else if(obj === null)
             str = 'null';
          else if(obj === '')
             str = '\'\'';
