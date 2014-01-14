@@ -123,9 +123,12 @@ try{
    break;
 }
 </pre>
-it was found that when an empty string was added to the results of <code>toString()</code> the failed attempts diminish and the source of errors was lower down at the updated block:
+it was found that when an empty string was added to the results of <code>value.toString()</code> the failed attempts diminish and the source of errors was lower down at the updated block:
 <pre>
 if(!circular){
+   ....
+   if(value.toString)
+      tmp += value.toString() + '';
    ....
 }
 </pre>
