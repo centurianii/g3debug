@@ -45,12 +45,15 @@ See it at: http://jsfiddle.net/centurianii/wLJz4/1/
 
 Debug it
 ========
-Get a string with newlines <code>\n</code> describing the analyzed object at unlimited depth: <code>g3.debug(obj).toString()</code>.<br />
-Get a string with newlines describing only the first members of the analyzed object: <code>g3.debug(obj, 0).toString()</code>.<br />
-Get a string with newlines describing the analyzed object up at depth n: <code>g3.debug(obj, n).toString()</code>.<br />
-Get an html describing the analyzed object up at depth n: <code>g3.debug(obj, n).toHtml()</code>.<br />
-Get an ordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('o')</code>.<br />
-Get an unordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('u')</code>.<br />
+<ul>
+<li>Get a string with newlines <code>\n</code> describing the analyzed object at unlimited depth: <code>g3.debug(obj).toString()</code>.</li>
+<li>Get a string with newlines describing only the first members of the analyzed object: <code>g3.debug(obj, 0).toString()</code>.</li>
+<li>Get a string with newlines describing the analyzed object up at depth n: <code>g3.debug(obj, n).toString()</code>.</li>
+<li>Get an html describing the analyzed object up at depth n: <code>g3.debug(obj, n).toHtml()</code>.<br />
+Get an ordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('o')</code>.</li>
+<li>Get an unordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('u')</code>.</li>
+<li>Get a preformated description using method <code>debug.toString()</code> of the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('pre')</code> or <code>g3.debug(obj, n).popup()</code>.</li>
+</ul>
 
 Design
 ------
