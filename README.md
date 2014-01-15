@@ -144,6 +144,8 @@ Corrected unlimited search when we pass 0 as 2nd argument. Now, unlimited search
 <ol>
 <li>Now, handles any native type (number, boolean, string, date, array), functions and objects of any type native, host or custom.
 </li>
+<li>A third argument <code>force</code> was added to bypass the existence check of identifier's members as function <code>g3.utils.isEmptyObject()</code> fails on css host objects.
+</li>
 </ol>
 
 Have fun!
