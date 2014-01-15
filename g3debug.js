@@ -40,7 +40,7 @@
          }
          //overwrite previous result! (new ECMA 5 properties)
          //FF Error: returns 5 prototype properties on functions and 1 on arrays
-         //as their own!
+         //as their own members!
          if((typeof Object.getOwnPropertyNames === 'function') && (g3.utils.typeOf(obj) === 'object')){
             result = (Object.getOwnPropertyNames(obj).length === 0);
          }
@@ -72,6 +72,9 @@
 * @param {Number} 'maxDepth' the maximum depth to look for when a property is an 
 * object reference which in turn can contain other object references. It's 
 * 0-based starting with the first level childs.
+* @param {Boolean} 'force' If it evaluates to true, it forces debugger to  
+* analyse the first argument bypassing the result of 'g3.utils.isEmptyObject()'
+* which fails on css host objects. 
 * @return {Object} Returns an object. Circular references are not followed 
 * because they are recognised on first meet. The internal structure that is 
 * built is a flattened representation of a tree which is a 2-dimensional 
@@ -116,7 +119,7 @@
 * @author Scripto JS Editor by Centurian Comet.
 * @copyright MIT licence.
 *******************************************************************************/
-   g3.debug = function(obj, maxDepth){ //construct with argument
+   g3.debug = function(obj, maxDepth, force){ //construct with argument
       var tree = [], refs = [], max;
       refs.push( [ 0, obj ] );
       if((maxDepth === 0) || ((g3.utils.typeOf(maxDepth) === 'number') && (maxDepth > 0)))
@@ -216,7 +219,7 @@
          }*/
       };
       //for..in loop fails on functions with no members, null, empty objects, empty arrays, booleans, dates, numbers
-      if(g3.utils.isEmptyObject(obj)){
+      if(!force && g3.utils.isEmptyObject(obj)){
          var str;
          if(typeof obj === 'undefined')
             str = 'undefined';
