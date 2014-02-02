@@ -49,28 +49,24 @@ Debug it
 <li>Get a string with newlines <code>\n</code> describing the analyzed object at unlimited depth: <code>g3.debug(obj).toString()</code>.</li>
 <li>Get a string with newlines describing only the first members of the analyzed object: <code>g3.debug(obj, 0).toString()</code>.</li>
 <li>Get a string with newlines describing the analyzed object up at depth n: <code>g3.debug(obj, n).toString()</code>.</li>
-<li>Get an html describing the analyzed object up at depth n: <code>g3.debug(obj, n).toHtml()</code>.<br />
-Get an ordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('o')</code>.</li>
+<li>Get an html describing the analyzed object up at depth n: <code>g3.debug(obj, n).toHtml()</code>.</li>
+<li>Get an ordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('o')</code>.</li>
 <li>Get an unordered list describing the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('u')</code>.</li>
 <li>Get a preformated description using method <code>debug.toString()</code> of the analyzed object up at depth n in a new window: <code>g3.debug(obj, n).popup('pre')</code> or <code>g3.debug(obj, n).popup()</code>.</li>
 </ul>
 
+Depends
+=======
+None.
+
 Design
-------
+======
 Internally, the whole design exploits a variation of the module pattern and builds on a bigger library as it would be revealed in the forthcoming projects.
 
 A note on my library symbol: 
 -------------------------------------
 It's the <code>$$</code> internally but if you edit it at the last line <code>window.$$ = window.$$ || {}</code> you can name it whatever you want and call it like so externally!<br />
-Also, read <b>Update</b>.<br />
-Some calls:
-<pre>
-//debug 'obj' up to 5 levels deep and write the results to a new window
-//wrapped as an ordered list
-$$.utils.debug(obj, 5).popup('o');
-//the same as above but with no formation inside &lt;pre&gt;&lt;/pre&gt; tags
-$$.utils.debug(obj, 5).popup(); //or, $$.utils.debug(obj, 5).popup('pre');
-</pre>
+Now, it's <code>g3</code>, see: <b>Update</b>.<br />
 
 A note on jQuery: 
 -----------------------
@@ -102,7 +98,7 @@ Issues that was faced:
 - representing internally a tree as a single array, what I call the 'flattened tree representation' already successfully tested on my bigger projects :)
 
 Update
-------
+======
 <b>v.0.1</b><br />
 <ol>
 <li>My namespace moved from <code>$$</code> to <code>g3</code> and so all my projects moved from <code>js&lt;project-name&gt;</code> to <code>g3&lt;project-name&gt;</code> meaning: at global object <code>g3</code> look for member <code>&lt;project-name&gt;</code>, ex.<br />
