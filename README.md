@@ -137,14 +137,14 @@ if(!circular){
 </pre>
 </li>
 <li>
-Corrected unlimited search when we pass 0 as 2nd argument. Now, unlimited search happens only at negative numbers or null.
+It was corrected an endless for loop that was started when 0 was passed as the 2nd argument. Now, unlimited search happens only at negative numbers or null.
 </li>
 </ol>
 <b>v.0.1.2</b><br />
 <ol>
 <li>Now, handles any native type (number, boolean, string, date, array), functions and objects of any type native, host or custom.
 </li>
-<li>A third argument <code>force</code> was added to bypass the existence check of identifier's members as function <code>g3.utils.isEmptyObject()</code> fails on css host objects.
+<li>A third argument <code>force</code> was added to bypass any boolean result of function <code>g3.utils.isEmptyObject()</code> because it fails on css host objects.
 </li>
 </ol>
 
